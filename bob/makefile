@@ -1,18 +1,8 @@
-CFLAGS=-std=c99
+CFLAGS  = -std=c99
 CFLAGS += -Wall
 CFLAGS += -Wextra
-CFLAGS += -Werror 
-CFLAGS += -Wpointer-arith
-CFLAGS += -Wcast-align
-CFLAGS += -Wwrite-strings
-CFLAGS += -Wswitch-default
-CFLAGS += -Wunreachable-code
-CFLAGS += -Winit-self
-CFLAGS += -Wmissing-field-initializers
-CFLAGS += -Wno-unknown-pragmas
-CFLAGS += -Wstrict-prototypes
-CFLAGS += -Wundef
-CFLAGS += -Wold-style-definition
+# CFLAGS += -pedantic
+CFLAGS += -Werror
 
 
 test: tests.out
@@ -21,6 +11,6 @@ test: tests.out
 clean:
 	rm -f *.o *.out
 
-tests.out:
+tests.out: test/test_bob.c src/bob.c src/bob.h src/bstrlib.h src/bstraux.h
 	@echo Compiling $@
-	@cc src/bob.c test/vendor/unity.c test/test_bob.c -o tests.out
+	@cc $(CFLAGS) src/bob.c src/bstrlib.c src/bstraux.c test/vendor/unity.c test/test_bob.c -o tests.out
