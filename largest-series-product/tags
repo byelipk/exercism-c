@@ -1,0 +1,1010 @@
+
+makefile,30
+CFLAGS  = -std=c99CFLAGS1,0
+
+src/bstraux.c,4140
+# define _CRT_SECURE_NO_WARNINGS_CRT_SECURE_NO_WARNINGS18,471
+#define UNUSED(UNUSED30,668
+bstring bTail (bstring b, int n) {bTail37,804
+bstring bHead (bstring b, int n) {bHead47,1095
+int bFill (bstring b, char c, int len) {bFill57,1401
+int bReplicate (bstring b, int n) {bReplicate67,1694
+int bReverse (bstring b) {bReverse75,1844
+int bInsertChrs (bstring b, int pos, int len, unsigned char c, unsigned char fill) {bInsertChrs98,2356
+int bJustifyLeft (bstring b, int space) {bJustifyLeft116,2938
+int bJustifyRight (bstring b, int width, int space) {bJustifyRight139,3471
+int bJustifyCenter (bstring b, int width, int space) {bJustifyCenter153,3942
+int bJustifyMargin (bstring b, int width, int space) {bJustifyMargin168,4506
+static size_t readNothing (void *buff, size_t elsize, size_t nelem, void *parm) {readNothing204,5307
+struct bStream * bsFromBstr (const_bstring b) {bsFromBstr217,5692
+static size_t readRef (void *buff, size_t elsize, size_t nelem, void *parm) {readRef223,5882
+static struct bStream * bsFromBstrRef (struct tagbstring * t) {bsFromBstrRef243,6558
+char * bStr2NetStr (const_bstring b) {bStr2NetStr258,7173
+bstring bNetStr2Bstr (const char * buff) {bNetStr2Bstr282,7868
+static char b64ETable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";b64ETable307,8441
+bstring bBase64Encode (const_bstring b) {bBase64Encode313,8633
+#define B64_PAD B64_PAD378,10233
+#define B64_ERR B64_ERR379,10254
+static int base64DecodeSymbol (unsigned char alpha) {base64DecodeSymbol381,10276
+bstring bBase64DecodeEx (const_bstring b, int * boolTruncError) {bBase64DecodeEx398,10916
+#define UU_DECODE_BYTE(UU_DECODE_BYTE500,13127
+struct bUuInOut {bUuInOut502,13209
+	bstring src, dst;src503,13227
+	bstring src, dst;dst503,13227
+	int * badlines;badlines504,13246
+#define UU_MAX_LINELEN UU_MAX_LINELEN507,13267
+static int bUuDecLine (void * parm, int ofs, int len) {bUuDecLine509,13294
+bstring bUuDecodeEx (const_bstring src, int * badlines) {bUuDecodeEx594,15737
+struct bsUuCtx {bsUuCtx615,16209
+	struct bUuInOut io;io616,16226
+	struct bStream * sInp;sInp617,16247
+static size_t bsUuDecodePart (void *buff, size_t elsize, size_t nelem, void *parm) {bsUuDecodePart620,16275
+struct bStream * bsUuDecode (struct bStream * sInp, int * badlines) {bsUuDecode695,18484
+#define UU_ENCODE_BYTE(UU_ENCODE_BYTE720,19143
+bstring bUuEncode (const_bstring src) {bUuEncode727,19355
+bstring bYEncode (const_bstring src) {bYEncode766,20618
+#define MAX_OB_LEN MAX_OB_LEN795,21326
+bstring bYDecode (const_bstring src) {bYDecode797,21351
+int bSGMLEncode (bstring b) {bSGMLEncode850,22383
+bstring bStrfTime (const char * fmt, const struct tm * timeptr) {bStrfTime871,23111
+int bSetCstrChar (bstring b, int pos, char c) {bSetCstrChar919,24354
+int bSetChar (bstring b, int pos, char c) {bSetChar942,25001
+#define INIT_SECURE_INPUT_LENGTH INIT_SECURE_INPUT_LENGTH955,25283
+bstring bSecureInput (int maxlen, int termchar, bNgetc vgetchar, void * vgcCtx) {bSecureInput966,25710
+#define BWS_BUFF_SZ BWS_BUFF_SZ1008,26740
+struct bwriteStream {bwriteStream1010,26768
+    bstring buff;    /* Buffer for underwrites                   */buff1011,26790
+    void * parm;     /* The stream handle for core stream        */parm1012,26858
+    bNwrite writeFn; /* fwrite work-a-like fnptr for core stream */writeFn1013,26926
+    int isEOF;       /* track stream's EOF state                 */isEOF1014,26994
+    int minBuffSz;minBuffSz1015,27062
+struct bwriteStream * bwsOpen (bNwrite writeFn, void * parm) {bwsOpen1024,27332
+#define internal_bwswriteout(internal_bwswriteout1043,27739
+int bwsWriteFlush (struct bwriteStream * ws) {bwsWriteFlush1056,28041
+int bwsWriteBstr (struct bwriteStream * ws, const_bstring b) {bwsWriteBstr1070,28568
+int bwsWriteBlk (struct bwriteStream * ws, void * blk, int len) {bwsWriteBlk1112,29665
+int bwsIsEOF (const struct bwriteStream * ws) {bwsIsEOF1124,30053
+int bwsBuffLength (struct bwriteStream * ws, int sz) {bwsBuffLength1135,30440
+void * bwsClose (struct bwriteStream * ws) {bwsClose1149,30895
+
+src/bstraux.h,3311
+#define BSTRAUX_INCLUDEBSTRAUX_INCLUDE17,471
+#define bstrDeclare(bstrDeclare27,600
+#define bstrFree(bstrFree28,657
+#define bAssign(bAssign32,899
+#define bSubs(bSubs33,958
+#define bStrchr(bStrchr34,1048
+#define bStrchrFast(bStrchrFast35,1107
+#define bCatCstr(bCatCstr36,1166
+#define bCatBlk(bCatBlk37,1226
+#define bCatStatic(bCatStatic38,1290
+#define bTrunc(bTrunc39,1343
+#define bReplaceAll(bReplaceAll40,1401
+#define bUppercase(bUppercase41,1480
+#define bLowercase(bLowercase42,1533
+#define bCaselessCmp(bCaselessCmp43,1586
+#define bCaselessNCmp(bCaselessNCmp44,1646
+#define bBase64Decode(bBase64Decode45,1712
+#define bUuDecode(bUuDecode46,1779
+extern struct bStream * bsFromBstr (const_bstring b);bsFromBstr50,1874
+extern bstring bTail (bstring b, int n);bTail51,1928
+extern bstring bHead (bstring b, int n);bHead52,1969
+extern int bSetCstrChar (bstring a, int pos, char c);bSetCstrChar53,2010
+extern int bSetChar (bstring b, int pos, char c);bSetChar54,2064
+extern int bFill (bstring a, char c, int len);bFill55,2114
+extern int bReplicate (bstring b, int n);bReplicate56,2161
+extern int bReverse (bstring b);bReverse57,2203
+extern int bInsertChrs (bstring b, int pos, int len, unsigned char c, unsigned char fill);bInsertChrs58,2236
+extern bstring bStrfTime (const char * fmt, const struct tm * timeptr);bStrfTime59,2327
+#define bAscTime(bAscTime60,2399
+#define bCTime(bCTime61,2445
+extern int bJustifyLeft (bstring b, int space);bJustifyLeft64,2531
+extern int bJustifyRight (bstring b, int width, int space);bJustifyRight65,2579
+extern int bJustifyMargin (bstring b, int width, int space);bJustifyMargin66,2639
+extern int bJustifyCenter (bstring b, int width, int space);bJustifyCenter67,2700
+extern char * bStr2NetStr (const_bstring b);bStr2NetStr70,2806
+extern bstring bNetStr2Bstr (const char * buf);bNetStr2Bstr71,2851
+extern bstring bBase64Encode (const_bstring b);bBase64Encode72,2899
+extern bstring bBase64DecodeEx (const_bstring b, int * boolTruncError);bBase64DecodeEx73,2947
+extern struct bStream * bsUuDecode (struct bStream * sInp, int * badlines);bsUuDecode74,3019
+extern bstring bUuDecodeEx (const_bstring src, int * badlines);bUuDecodeEx75,3095
+extern bstring bUuEncode (const_bstring src);bUuEncode76,3159
+extern bstring bYEncode (const_bstring src);bYEncode77,3205
+extern bstring bYDecode (const_bstring src);bYDecode78,3250
+extern int bSGMLEncode (bstring b);bSGMLEncode79,3295
+typedef int (* bNwrite) (const void * buf, size_t elsize, size_t nelem, void * parm);bNwrite82,3354
+struct bwriteStream * bwsOpen (bNwrite writeFn, void * parm);bwsOpen84,3441
+int bwsWriteBstr (struct bwriteStream * stream, const_bstring b);bwsWriteBstr85,3503
+int bwsWriteBlk (struct bwriteStream * stream, void * blk, int len);bwsWriteBlk86,3569
+int bwsWriteFlush (struct bwriteStream * stream);bwsWriteFlush87,3638
+int bwsIsEOF (const struct bwriteStream * stream);bwsIsEOF88,3688
+int bwsBuffLength (struct bwriteStream * stream, int sz);bwsBuffLength89,3739
+void * bwsClose (struct bwriteStream * stream);bwsClose90,3797
+#define bSecureDestroy(bSecureDestroy93,3871
+#define bSecureWriteProtect(bSecureWriteProtect100,4317
+extern bstring bSecureInput (int maxlen, int termchar,bSecureInput108,4907
+
+src/bstrlib.c,9784
+# define _CRT_SECURE_NO_WARNINGS_CRT_SECURE_NO_WARNINGS15,379
+void* bstr__alloc (size_t sz) {bstr__alloc35,780
+#define bstr__alloc(bstr__alloc41,886
+#define bstr__free(bstr__free46,954
+#define bstr__realloc(bstr__realloc50,1015
+#define bstr__memcpy(bstr__memcpy54,1090
+#define bstr__memmove(bstr__memmove58,1171
+#define bstr__memset(bstr__memset62,1253
+#define bstr__memcmp(bstr__memcmp66,1333
+#define bstr__memchr(bstr__memchr70,1413
+#define bBlockCopy(bBlockCopy75,1519
+static int snapUpSize (int i) {snapUpSize79,1729
+int balloc (bstring b, int olen) {balloc107,2323
+int ballocmin (bstring b, int len) {ballocmin178,4106
+bstring bfromcstr (const char * str) {bfromcstr205,4750
+bstring bfromcstrrangealloc (int minl, int maxl, const char* str) {bfromcstrrangealloc234,5527
+bstring bfromcstralloc (int mlen, const char * str) {bfromcstralloc272,6439
+bstring blk2bstr (const void * blk, int len) {blk2bstr281,6683
+char * bstr2cstr (const_bstring b, char z) {bstr2cstr314,7519
+int bcstrfree (char * s) {bcstrfree343,8433
+int bconcat (bstring b0, const_bstring b1) {bconcat355,8634
+int bconchar (bstring b, char c) {bconchar388,9453
+int bcatcstr (bstring b, const char * s) {bcatcstr405,9827
+int bcatblk (bstring b, const void * s, int len) {bcatblk431,10453
+bstring bstrcpy (const_bstring b) {bstrcpy450,10975
+int bassign (bstring a, const_bstring b) {bassign490,11847
+int bassignmidstr (bstring a, const_bstring b, int left, int len) {bassignmidstr512,12572
+int bassigncstr (bstring a, const char * str) {bassigncstr544,13425
+int bassignblk (bstring a, const void * s, int len) {bassignblk573,14242
+int btrunc (bstring b, int n) {btrunc588,14722
+#define   upcase(upcase598,14967
+#define downcase(downcase599,15017
+#define   wspace(wspace600,15067
+int btoupper (bstring b) {btoupper606,15201
+int btolower (bstring b) {btolower620,15549
+int bstricmp (const_bstring b0, const_bstring b1) {bstricmp639,16312
+int bstrnicmp (const_bstring b0, const_bstring b1, int n) {bstrnicmp676,17503
+int biseqcaselessblk (const_bstring b, const void * blk, int len) {biseqcaselessblk715,18711
+int biseqcaseless (const_bstring b0, const_bstring b1) {biseqcaseless741,19613
+int bisstemeqcaselessblk (const_bstring b0, const void * blk, int len) {bisstemeqcaselessblk755,20231
+int bltrimws (bstring b) {bltrimws777,20810
+int brtrimws (bstring b) {brtrimws799,21245
+int btrimws (bstring b) {btrimws823,21731
+int biseqblk (const_bstring b, const void * blk, int len) {biseqblk851,22570
+int biseq (const_bstring b0, const_bstring b1) {biseq866,23203
+int bisstemeqblk (const_bstring b0, const void * blk, int len) {bisstemeqblk882,23933
+int biseqcstr (const_bstring b, const char * s) {biseqcstr907,24963
+int biseqcstrcaseless (const_bstring b, const char * s) {biseqcstrcaseless930,25964
+int bstrcmp (const_bstring b0, const_bstring b1) {bstrcmp957,27203
+int bstrncmp (const_bstring b0, const_bstring b1, int n) {bstrncmp987,28321
+bstring bmidstr (const_bstring b, int left, int len) {bmidstr1017,29238
+int bdelete (bstring b, int pos, int len) {bdelete1039,29872
+int bdestroy (bstring b) {bdestroy1070,30729
+int binstr (const_bstring b1, int pos, const_bstring b2) {binstr1097,31578
+int binstrr (const_bstring b1, int pos, const_bstring b2) {binstrr1184,33670
+int binstrcaseless (const_bstring b1, int pos, const_bstring b2) {binstrcaseless1231,35018
+int binstrrcaseless (const_bstring b1, int pos, const_bstring b2) {binstrrcaseless1279,36387
+int bstrchrp (const_bstring b, int c, int pos) {bstrchrp1324,37402
+int bstrrchrp (const_bstring b, int c, int pos) {bstrrchrp1340,37890
+#define LONG_LOG_BITS_QTY LONG_LOG_BITS_QTY1352,38192
+#define LONG_BITS_QTY LONG_BITS_QTY1353,38222
+#define LONG_TYPE LONG_TYPE1354,38269
+#define CFCLEN CFCLEN1356,38302
+struct charField { LONG_TYPE content[CFCLEN]; };charField1357,38351
+struct charField { LONG_TYPE content[CFCLEN]; };content1357,38351
+#define testInCharField(testInCharField1358,38400
+#define setInCharField(setInCharField1360,38545
+#define CFCLEN CFCLEN1368,38726
+struct charField { unsigned char content[CFCLEN]; };charField1369,38757
+struct charField { unsigned char content[CFCLEN]; };content1369,38757
+#define testInCharField(testInCharField1370,38810
+#define setInCharField(setInCharField1371,38877
+static int buildCharField (struct charField * cf, const_bstring b) {buildCharField1376,38995
+static void invertCharField (struct charField * cf) {invertCharField1386,39290
+static int binchrCF (const unsigned char * data, int len, int pos,binchrCF1392,39446
+int binchr (const_bstring b0, int pos, const_bstring b1) {binchr1408,39971
+static int binchrrCF (const unsigned char * data, int pos,binchrrCF1418,40341
+int binchrr (const_bstring b0, int pos, const_bstring b1) {binchrr1434,40864
+int bninchr (const_bstring b0, int pos, const_bstring b1) {bninchr1450,41515
+int bninchrr (const_bstring b0, int pos, const_bstring b1) {bninchrr1465,42091
+int bsetstr (bstring b0, int pos, const_bstring b1, unsigned char fill) {bsetstr1482,42782
+int binsertblk (bstring b, int pos, const void * blk, int len,binsertblk1540,44411
+int binsert (bstring b1, int pos, const_bstring b2, unsigned char fill) {binsert1592,46113
+int breplace (bstring b1, int pos, int len, const_bstring b2,breplace1603,46542
+typedef int (*instr_fnptr) (const_bstring s1, int pos, const_bstring s2);instr_fnptr1656,48148
+#define INITIAL_STATIC_FIND_INDEX_COUNT INITIAL_STATIC_FIND_INDEX_COUNT1658,48223
+static int findreplaceengine (bstring b, const_bstring find,findreplaceengine1660,48267
+int bfindreplace (bstring b, const_bstring find, const_bstring repl,bfindreplace1812,52859
+int bfindreplacecaseless (bstring b, const_bstring find, const_bstring repl,bfindreplacecaseless1823,53264
+int binsertch (bstring b, int pos, int len, unsigned char fill) {binsertch1835,53777
+int bpattern (bstring b, int len) {bpattern1872,54868
+#define BS_BUFF_SZ BS_BUFF_SZ1886,55215
+int breada (bstring b, bNread readPtr, void * parm) {breada1894,55470
+bstring bread (bNread readPtr, void * parm) {bread1919,56162
+int bassigngets (bstring b, bNgetc getcPtr, void * parm, char terminator) {bassigngets1942,57016
+int bgetsa (bstring b, bNgetc getcPtr, void * parm, char terminator) {bgetsa1980,58232
+bstring bgets (bNgetc getcPtr, void * parm, char terminator) {bgets2016,59340
+struct bStream {bStream2027,59566
+	bstring buff;		/* Buffer for over-reads */buff2028,59583
+	void * parm;		/* The stream handle for core stream */parm2029,59627
+	bNread readFnPtr;	/* fread compatible fnptr for core stream */readFnPtr2030,59682
+	int isEOF;			/* track file's EOF state */isEOF2031,59746
+	int maxBuffSz;maxBuffSz2032,59789
+struct bStream * bsopen (bNread readPtr, void * parm) {bsopen2041,60055
+int bsbufflength (struct bStream * s, int sz) {bsbufflength2060,60588
+int bseof (const struct bStream * s) {bseof2068,60763
+void * bsclose (struct bStream * s) {bsclose2078,61065
+int bsreadlna (bstring r, struct bStream * s, char terminator) {bsreadlna2098,61670
+int bsreadlnsa (bstring r, struct bStream * s, const_bstring term) {bsreadlnsa2163,63685
+int bsreada (bstring r, struct bStream * s, int n) {bsreada2235,65986
+int bsreadln (bstring r, struct bStream * s, char terminator) {bsreadln2300,67649
+int bsreadlns (bstring r, struct bStream * s, const_bstring term) {bsreadlns2315,68293
+int bsread (bstring r, struct bStream * s, int n) {bsread2333,69124
+int bsunread (struct bStream * s, const_bstring b) {bsunread2347,69602
+int bspeek (bstring r, const struct bStream * s) {bspeek2357,69945
+bstring bjoinblk (const struct bstrList * bl, const void * blk, int len) {bjoinblk2369,70408
+bstring bjoin (const struct bstrList * bl, const_bstring sep) {bjoin2434,72113
+#define BSSSC_BUFF_LEN BSSSC_BUFF_LEN2439,72296
+int bssplitscb (struct bStream * s, const_bstring splitStr,bssplitscb2459,73236
+int bssplitstrcb (struct bStream * s, const_bstring splitStr,bssplitstrcb2526,75347
+struct bstrList * bstrListCreate (void) {bstrListCreate2575,76482
+int bstrListDestroy (struct bstrList * sl) {bstrListDestroy2596,76940
+int bstrListAlloc (struct bstrList * sl, int msz) {bstrListAlloc2618,77413
+int bstrListAllocMin (struct bstrList * sl, int msz) {bstrListAllocMin2645,78209
+int bsplitcb (const_bstring str, unsigned char splitChar, int pos,bsplitcb2676,79533
+int bsplitscb (const_bstring str, const_bstring splitStr, int pos,bsplitscb2710,80887
+int bsplitstrcb (const_bstring str, const_bstring splitStr, int pos,bsplitstrcb2754,82514
+struct genBstrList {genBstrList2783,83333
+	bstring b;b2784,83354
+	struct bstrList * bl;bl2785,83366
+static int bscb (void * parm, int ofs, int len) {bscb2788,83393
+struct bstrList * bsplit (const_bstring str, unsigned char splitChar) {bsplit2817,84135
+struct bstrList * bsplitstr (const_bstring str, const_bstring splitStr) {bsplitstr2845,84890
+struct bstrList * bsplits (const_bstring str, const_bstring splitStr) {bsplits2874,85740
+#  define BSTRLIB_NOVSNPBSTRLIB_NOVSNP2901,86478
+#define exvsnprintf(exvsnprintf2907,86644
+#define exvsnprintf(exvsnprintf2912,86860
+#define START_VSNBUFF START_VSNBUFF2913,86919
+extern int vsnprintf (char *buf, size_t count, const char *format, va_list arg);vsnprintf2919,87117
+#define exvsnprintf(exvsnprintf2922,87206
+#define START_VSNBUFF START_VSNBUFF2929,87332
+int bformata (bstring b, const char * fmt, ...) {bformata2947,88156
+int bassignformat (bstring b, const char * fmt, ...) {bassignformat2995,89561
+bstring bformat (const char * fmt, ...) {bformat3043,90940
+int bvcformata (bstring b, int count, const char * fmt, va_list arg) {bvcformata3101,93035
+
+src/bstrlib.h,9681
+#define BSTRLIB_INCLUDEBSTRLIB_INCLUDE15,370
+#  define BSTRLIB_NOVSNPBSTRLIB_NOVSNP28,628
+#define BSTR_ERR BSTR_ERR32,669
+#define BSTR_OK BSTR_OK33,691
+#define BSTR_BS_BUFF_LENGTH_GET BSTR_BS_BUFF_LENGTH_GET34,711
+typedef struct tagbstring * bstring;bstring36,748
+typedef const struct tagbstring * const_bstring;const_bstring37,785
+#define BSTR_VER_MAJOR BSTR_VER_MAJOR40,849
+#define BSTR_VER_MINOR BSTR_VER_MINOR41,875
+#define BSTR_VER_UPDATE BSTR_VER_UPDATE42,901
+#define cstr2bstr cstr2bstr45,949
+extern bstring bfromcstr (const char * str);bfromcstr46,977
+extern bstring bfromcstralloc (int mlen, const char * str);bfromcstralloc47,1022
+extern bstring bfromcstrrangealloc (int minl, int maxl, const char* str);bfromcstrrangealloc48,1082
+extern bstring blk2bstr (const void * blk, int len);blk2bstr49,1156
+extern char * bstr2cstr (const_bstring s, char z);bstr2cstr50,1209
+extern int bcstrfree (char * s);bcstrfree51,1260
+extern bstring bstrcpy (const_bstring b1);bstrcpy52,1293
+extern int bassign (bstring a, const_bstring b);bassign53,1336
+extern int bassignmidstr (bstring a, const_bstring b, int left, int len);bassignmidstr54,1385
+extern int bassigncstr (bstring a, const char * str);bassigncstr55,1459
+extern int bassignblk (bstring a, const void * s, int len);bassignblk56,1513
+extern int bdestroy (bstring b);bdestroy59,1597
+extern int balloc (bstring s, int len);balloc62,1672
+extern int ballocmin (bstring b, int len);ballocmin63,1712
+extern bstring bmidstr (const_bstring b, int left, int len);bmidstr66,1783
+extern int bconcat (bstring b0, const_bstring b1);bconcat69,1882
+extern int bconchar (bstring b0, char c);bconchar70,1933
+extern int bcatcstr (bstring b, const char * s);bcatcstr71,1975
+extern int bcatblk (bstring b, const void * s, int len);bcatblk72,2024
+extern int binsert (bstring s1, int pos, const_bstring s2, unsigned char fill);binsert73,2081
+extern int binsertblk (bstring s1, int pos, const void * s2, int len, unsigned char fill);binsertblk74,2161
+extern int binsertch (bstring s1, int pos, int len, unsigned char fill);binsertch75,2252
+extern int breplace (bstring b1, int pos, int len, const_bstring b2, unsigned char fill);breplace76,2325
+extern int bdelete (bstring s1, int pos, int len);bdelete77,2415
+extern int bsetstr (bstring b0, int pos, const_bstring b1, unsigned char fill);bsetstr78,2466
+extern int btrunc (bstring b, int n);btrunc79,2546
+extern int bstricmp (const_bstring b0, const_bstring b1);bstricmp82,2613
+extern int bstrnicmp (const_bstring b0, const_bstring b1, int n);bstrnicmp83,2671
+extern int biseqcaseless (const_bstring b0, const_bstring b1);biseqcaseless84,2737
+extern int biseqcaselessblk (const_bstring b, const void * blk, int len);biseqcaselessblk85,2800
+extern int bisstemeqcaselessblk (const_bstring b0, const void * blk, int len);bisstemeqcaselessblk86,2874
+extern int biseq (const_bstring b0, const_bstring b1);biseq87,2953
+extern int biseqblk (const_bstring b, const void * blk, int len);biseqblk88,3008
+extern int bisstemeqblk (const_bstring b0, const void * blk, int len);bisstemeqblk89,3074
+extern int biseqcstr (const_bstring b, const char * s);biseqcstr90,3145
+extern int biseqcstrcaseless (const_bstring b, const char * s);biseqcstrcaseless91,3201
+extern int bstrcmp (const_bstring b0, const_bstring b1);bstrcmp92,3265
+extern int bstrncmp (const_bstring b0, const_bstring b1, int n);bstrncmp93,3322
+extern int binstr (const_bstring s1, int pos, const_bstring s2);binstr94,3387
+extern int binstrr (const_bstring s1, int pos, const_bstring s2);binstrr95,3452
+extern int binstrcaseless (const_bstring s1, int pos, const_bstring s2);binstrcaseless96,3518
+extern int binstrrcaseless (const_bstring s1, int pos, const_bstring s2);binstrrcaseless97,3591
+extern int bstrchrp (const_bstring b, int c, int pos);bstrchrp98,3665
+extern int bstrrchrp (const_bstring b, int c, int pos);bstrrchrp99,3720
+#define bstrchr(bstrchr100,3776
+#define bstrrchr(bstrrchr101,3820
+extern int binchr (const_bstring b0, int pos, const_bstring b1);binchr102,3877
+extern int binchrr (const_bstring b0, int pos, const_bstring b1);binchrr103,3942
+extern int bninchr (const_bstring b0, int pos, const_bstring b1);bninchr104,4008
+extern int bninchrr (const_bstring b0, int pos, const_bstring b1);bninchrr105,4074
+extern int bfindreplace (bstring b, const_bstring find, const_bstring repl, int pos);bfindreplace106,4141
+extern int bfindreplacecaseless (bstring b, const_bstring find, const_bstring repl, int pos);bfindreplacecaseless107,4227
+struct bstrList {bstrList110,4363
+    int qty, mlen;qty111,4381
+    int qty, mlen;mlen111,4381
+    bstring * entry;entry112,4400
+extern struct bstrList * bstrListCreate (void);bstrListCreate114,4424
+extern int bstrListDestroy (struct bstrList * sl);bstrListDestroy115,4472
+extern int bstrListAlloc (struct bstrList * sl, int msz);bstrListAlloc116,4523
+extern int bstrListAllocMin (struct bstrList * sl, int msz);bstrListAllocMin117,4581
+extern struct bstrList * bsplit (const_bstring str, unsigned char splitChar);bsplit120,4681
+extern struct bstrList * bsplits (const_bstring str, const_bstring splitStr);bsplits121,4759
+extern struct bstrList * bsplitstr (const_bstring str, const_bstring splitStr);bsplitstr122,4837
+extern bstring bjoin (const struct bstrList * bl, const_bstring sep);bjoin123,4917
+extern bstring bjoinblk (const struct bstrList * bl, const void * s, int len);bjoinblk124,4987
+extern int bsplitcb (const_bstring str, unsigned char splitChar, int pos,bsplitcb125,5066
+extern int bsplitscb (const_bstring str, const_bstring splitStr, int pos,bsplitscb127,5199
+extern int bsplitstrcb (const_bstring str, const_bstring splitStr, int pos,bsplitstrcb129,5332
+extern int bpattern (bstring b, int len);bpattern133,5498
+extern int btoupper (bstring b);btoupper134,5540
+extern int btolower (bstring b);btolower135,5573
+extern int bltrimws (bstring b);bltrimws136,5606
+extern int brtrimws (bstring b);brtrimws137,5639
+extern int btrimws (bstring b);btrimws138,5672
+extern bstring bformat (const char * fmt, ...);bformat141,5735
+extern int bformata (bstring b, const char * fmt, ...);bformata142,5783
+extern int bassignformat (bstring b, const char * fmt, ...);bassignformat143,5839
+extern int bvcformata (bstring b, int count, const char * fmt, va_list arglist);bvcformata144,5900
+#define bvformata(bvformata146,5982
+typedef int (*bNgetc) (void *parm);bNgetc169,6621
+typedef size_t (* bNread) (void *buff, size_t elsize, size_t nelem, void *parm);bNread170,6657
+extern bstring bgets (bNgetc getcPtr, void * parm, char terminator);bgets173,6761
+extern bstring bread (bNread readPtr, void * parm);bread174,6830
+extern int bgetsa (bstring b, bNgetc getcPtr, void * parm, char terminator);bgetsa175,6882
+extern int bassigngets (bstring b, bNgetc getcPtr, void * parm, char terminator);bassigngets176,6959
+extern int breada (bstring b, bNread readPtr, void * parm);breada177,7041
+extern struct bStream * bsopen (bNread readPtr, void * parm);bsopen180,7125
+extern void * bsclose (struct bStream * s);bsclose181,7187
+extern int bsbufflength (struct bStream * s, int sz);bsbufflength182,7231
+extern int bsreadln (bstring b, struct bStream * s, char terminator);bsreadln183,7285
+extern int bsreadlns (bstring r, struct bStream * s, const_bstring term);bsreadlns184,7355
+extern int bsread (bstring b, struct bStream * s, int n);bsread185,7429
+extern int bsreadlna (bstring b, struct bStream * s, char terminator);bsreadlna186,7487
+extern int bsreadlnsa (bstring r, struct bStream * s, const_bstring term);bsreadlnsa187,7558
+extern int bsreada (bstring b, struct bStream * s, int n);bsreada188,7633
+extern int bsunread (struct bStream * s, const_bstring b);bsunread189,7692
+extern int bspeek (bstring r, const struct bStream * s);bspeek190,7751
+extern int bssplitscb (struct bStream * s, const_bstring splitStr, bssplitscb191,7808
+extern int bssplitstrcb (struct bStream * s, const_bstring splitStr, bssplitstrcb193,7947
+extern int bseof (const struct bStream * s);bseof195,8088
+struct tagbstring {tagbstring197,8134
+	int mlen;mlen198,8154
+	int slen;slen199,8165
+	unsigned char * data;data200,8176
+#define blengthe(blengthe204,8225
+#define blength(blength205,8316
+#define bdataofse(bdataofse206,8364
+#define bdataofs(bdataofs207,8480
+#define bdatae(bdatae208,8542
+#define bdata(bdata209,8592
+#define bchare(bchare210,8638
+#define bchar(bchar211,8734
+#define bsStaticMlen(bsStaticMlen214,8837
+# define bsStatic(bsStatic216,8941
+# define bsStatic(bsStatic219,9013
+#define bsStaticBlkParms(bsStaticBlkParms223,9118
+#define bcatStatic(bcatStatic225,9188
+#define bfromStatic(bfromStatic226,9254
+#define bassignStatic(bassignStatic227,9316
+#define binsertStatic(binsertStatic228,9385
+#define bjoinStatic(bjoinStatic229,9467
+#define biseqStatic(biseqStatic230,9534
+#define bisstemeqStatic(bisstemeqStatic231,9601
+#define biseqcaselessStatic(biseqcaselessStatic232,9673
+#define bisstemeqcaselessStatic(bisstemeqcaselessStatic233,9753
+#define cstr2tbstr cstr2tbstr236,9874
+#define btfromcstr(btfromcstr237,9904
+#define blk2tbstr(blk2tbstr242,10190
+#define btfromblk(btfromblk247,10352
+#define bmid2tbstr(bmid2tbstr248,10394
+#define btfromblkltrimws(btfromblkltrimws272,12213
+#define btfromblkrtrimws(btfromblkrtrimws284,13084
+#define btfromblktrimws(btfromblktrimws296,13955
+#define bwriteprotect(bwriteprotect313,15094
+#define bwriteallow(bwriteallow314,15162
+#define biswriteprotected(biswriteprotected315,15254
+
+src/dbg.h,366
+#define __dbg_h____dbg_h__2,18
+#define debug(debug9,110
+#define debug(debug11,138
+#define clean_errno(clean_errno14,256
+#define log_err(log_err16,319
+#define log_warn(log_warn18,448
+#define log_info(log_info20,577
+#define check(check22,680
+#define sentinel(sentinel24,767
+#define check_mem(check_mem26,846
+#define check_debug(check_debug28,897
+
+src/largest_series_product.c,86
+uint64_t largest_series_product(char *string, int series)largest_series_product3,37
+
+src/largest_series_product.h,278
+#define _largest_largest2,17
+#define CHECK_IS_DIGIT(CHECK_IS_DIGIT11,153
+#define TO_DIGIT(TO_DIGIT13,218
+#define GET_DIGIT(GET_DIGIT15,249
+#define HANDLE_DIGIT(HANDLE_DIGIT17,285
+uint64_t largest_series_product(char *string, int series);largest_series_product23,434
+
+test/test_largest_series_product.c,1924
+void test_can_find_the_largest_product_of_2_with_numbers_in_order(void)test_can_find_the_largest_product_of_2_with_numbers_in_order4,70
+void test_can_find_the_largest_product_of_2(void)test_can_find_the_largest_product_of_29,214
+void test_finds_the_largest_product_if_span_equals_length(void)test_finds_the_largest_product_if_span_equals_length14,335
+void test_can_find_the_largest_product_of_3_with_numbers_in_order(void)test_can_find_the_largest_product_of_3_with_numbers_in_order19,463
+void test_can_find_the_largest_product_of_3(void)test_can_find_the_largest_product_of_324,608
+void test_can_find_the_largest_product_of_5_with_numbers_in_order(void)test_can_find_the_largest_product_of_5_with_numbers_in_order29,731
+void test_can_get_the_largest_product_of_a_big_number(void)test_can_get_the_largest_product_of_a_big_number34,878
+void test_can_get_the_largest_product_of_a_big_number_ii(void)test_can_get_the_largest_product_of_a_big_number_ii41,1096
+void test_can_get_the_largest_product_of_a_big_number_project_euler(void)test_can_get_the_largest_product_of_a_big_number_project_euler48,1317
+void test_reports_zero_if_the_only_digits_are_zero(void)test_reports_zero_if_the_only_digits_are_zero56,2552
+void test_reports_zero_if_all_spans_include_zero(void)test_reports_zero_if_all_spans_include_zero61,2674
+void test_rejects_span_longer_than_string_length(void)test_rejects_span_longer_than_string_length66,2795
+void test_reports_1_for_empty_string_and_empty_product_(void)test_reports_1_for_empty_string_and_empty_product_71,2915
+void test_reports_1_for_nonempty_string_and_empty_product_(void)test_reports_1_for_nonempty_string_and_empty_product_76,3038
+void test_rejects_empty_string_and_nonzero_span(void)test_rejects_empty_string_and_nonzero_span81,3167
+void test_rejects_invalid_character_in_digits(void)test_rejects_invalid_character_in_digits86,3283
+int main(void)main91,3402
+
+test/vendor/unity.c,7315
+#define UNITY_FAIL_AND_BAIL UNITY_FAIL_AND_BAIL10,388
+#define UNITY_IGNORE_AND_BAIL UNITY_IGNORE_AND_BAIL11,482
+#define UNITY_SKIP_EXECUTION UNITY_SKIP_EXECUTION13,644
+#define UNITY_PRINT_EOL UNITY_PRINT_EOL14,759
+struct _Unity Unity;Unity16,819
+const char UnityStrOk[]                     = "OK";UnityStrOk18,841
+const char UnityStrPass[]                   = "PASS";UnityStrPass19,893
+const char UnityStrFail[]                   = "FAIL";UnityStrFail20,947
+const char UnityStrIgnore[]                 = "IGNORE";UnityStrIgnore21,1001
+const char UnityStrNull[]                   = "NULL";UnityStrNull22,1057
+const char UnityStrSpacer[]                 = ". ";UnityStrSpacer23,1111
+const char UnityStrExpected[]               = " Expected ";UnityStrExpected24,1163
+const char UnityStrWas[]                    = " Was ";UnityStrWas25,1223
+const char UnityStrTo[]                     = " To ";UnityStrTo26,1278
+const char UnityStrElement[]                = " Element ";UnityStrElement27,1332
+const char UnityStrByte[]                   = " Byte ";UnityStrByte28,1391
+const char UnityStrMemory[]                 = " Memory Mismatch.";UnityStrMemory29,1447
+const char UnityStrDelta[]                  = " Values Not Within Delta ";UnityStrDelta30,1514
+const char UnityStrPointless[]              = " You Asked Me To Compare Nothing, Which Was Pointless.";UnityStrPointless31,1589
+const char UnityStrNullPointerForExpected[] = " Expected pointer to be NULL";UnityStrNullPointerForExpected32,1693
+const char UnityStrNullPointerForActual[]   = " Actual pointer was NULL";UnityStrNullPointerForActual33,1771
+const char UnityStrNot[]                    = "Not ";UnityStrNot34,1845
+const char UnityStrInf[]                    = "Infinity";UnityStrInf35,1899
+const char UnityStrNegInf[]                 = "Negative Infinity";UnityStrNegInf36,1957
+const char UnityStrNaN[]                    = "NaN";UnityStrNaN37,2024
+const char UnityStrDet[]                    = "Determinate";UnityStrDet38,2077
+const char UnityStrErrFloat[]               = "Unity Floating Point Disabled";UnityStrErrFloat39,2138
+const char UnityStrErrDouble[]              = "Unity Double Precision Disabled";UnityStrErrDouble40,2217
+const char UnityStrErr64[]                  = "Unity 64-bit Support Disabled";UnityStrErr6441,2298
+const char UnityStrBreaker[]                = "-----------------------";UnityStrBreaker42,2377
+const char UnityStrResultsTests[]           = " Tests ";UnityStrResultsTests43,2450
+const char UnityStrResultsFailures[]        = " Failures ";UnityStrResultsFailures44,2507
+const char UnityStrResultsIgnored[]         = " Ignored ";UnityStrResultsIgnored45,2567
+static const _UF f_zero = 0.0f;f_zero50,2768
+static const _UD d_zero = 0.0;d_zero52,2829
+const _U_UINT UnitySizeMask[] =UnitySizeMask57,2918
+void UnityPrintFail(void);UnityPrintFail71,3159
+void UnityPrintOk(void);UnityPrintOk72,3186
+void UnityPrint(const char* string)UnityPrint78,3362
+void UnityPrintLen(const char* string, const _UU32 length);UnityPrintLen114,4270
+void UnityPrintLen(const char* string, const _UU32 length)UnityPrintLen115,4330
+void UnityPrintNumberByStyle(const _U_SINT number, const UNITY_DISPLAY_STYLE_T style)UnityPrintNumberByStyle152,5345
+void UnityPrintNumber(const _U_SINT number_to_print)UnityPrintNumber170,5957
+void UnityPrintNumberUnsigned(const _U_UINT number)UnityPrintNumberUnsigned215,7047
+void UnityPrintNumberHex(const _U_UINT number, const char nibbles_to_print)UnityPrintNumberHex240,7606
+void UnityPrintMask(const _U_UINT mask, const _U_UINT number)UnityPrintMask262,8136
+void UnityPrintFloat(_UF number)UnityPrintFloat291,8783
+void UnityPrintFail(void);UnityPrintFail301,8973
+void UnityPrintFail(void)UnityPrintFail302,9000
+void UnityPrintOk(void);UnityPrintOk307,9061
+void UnityPrintOk(void)UnityPrintOk308,9086
+static void UnityTestResultsBegin(const char* file, const UNITY_LINE_TYPE line);UnityTestResultsBegin314,9193
+static void UnityTestResultsBegin(const char* file, const UNITY_LINE_TYPE line)UnityTestResultsBegin315,9274
+static void UnityTestResultsFailBegin(const UNITY_LINE_TYPE line);UnityTestResultsFailBegin331,9675
+static void UnityTestResultsFailBegin(const UNITY_LINE_TYPE line)UnityTestResultsFailBegin332,9742
+void UnityConcludeTest(void)UnityConcludeTest344,10030
+static void UnityAddMsgIfSpecified(const char* msg);UnityAddMsgIfSpecified366,10490
+static void UnityAddMsgIfSpecified(const char* msg)UnityAddMsgIfSpecified367,10543
+static void UnityPrintExpectedAndActualStrings(const char* expected, const char* actual);UnityPrintExpectedAndActualStrings377,10736
+static void UnityPrintExpectedAndActualStrings(const char* expected, const char* actual)UnityPrintExpectedAndActualStrings378,10826
+static void UnityPrintExpectedAndActualStringsLen(const char* expected, const char* actual, const _UU32 length)UnityPrintExpectedAndActualStringsLen405,11403
+static int UnityCheckArraysForNull(UNITY_PTR_ATTRIBUTE const void* expected, UNITY_PTR_ATTRIBUTE const void* actual, const UNITY_LINE_TYPE lineNumber, const char* msg)UnityCheckArraysForNull437,12109
+void UnityAssertBits(const _U_SINT mask,UnityAssertBits469,13053
+void UnityAssertEqualNumber(const _U_SINT expected,UnityAssertEqualNumber490,13713
+void UnityAssertEqualIntArray(UNITY_PTR_ATTRIBUTE const void* expected,UnityAssertEqualIntArray511,14389
+void UnityAssertEqualFloatArray(UNITY_PTR_ATTRIBUTE const _UF* expected,UnityAssertEqualFloatArray629,20068
+void UnityAssertFloatsWithin(const _UF delta,UnityAssertFloatsWithin685,21927
+void UnityAssertFloatSpecial(const _UF actual,UnityAssertFloatSpecial723,22930
+void UnityAssertEqualDoubleArray(UNITY_PTR_ATTRIBUTE const _UD* expected,UnityAssertEqualDoubleArray790,25274
+void UnityAssertDoublesWithin(const _UD delta,UnityAssertDoublesWithin846,27140
+void UnityAssertDoubleSpecial(const _UD actual,UnityAssertDoubleSpecial885,28158
+void UnityAssertNumbersWithin( const _U_SINT delta,UnityAssertNumbersWithin952,30477
+void UnityAssertEqualString(const char* expected,UnityAssertEqualString991,31825
+void UnityAssertEqualStringLen(const char* expected,UnityAssertEqualStringLen1030,32830
+void UnityAssertEqualStringArray( const char** expected,UnityAssertEqualStringArray1071,33914
+void UnityAssertEqualMemory( UNITY_PTR_ATTRIBUTE const void* expected,UnityAssertEqualMemory1131,35783
+void UnityFail(const char* msg, const UNITY_LINE_TYPE line)UnityFail1192,38108
+void UnityIgnore(const char* msg, const UNITY_LINE_TYPE line)UnityIgnore1211,38505
+    void setUp(void);setUp1228,38907
+    void tearDown(void);tearDown1229,38929
+    UNITY_WEAK_ATTRIBUTE void setUp(void) { }setUp1230,38954
+    UNITY_WEAK_ATTRIBUTE void tearDown(void) { }tearDown1231,39000
+#   pragma weak setUpsetUp1233,39082
+    void setUp(void);setUp1234,39104
+#   pragma weak tearDowntearDown1235,39126
+    void tearDown(void);tearDown1236,39151
+    void setUp(void);setUp1238,39182
+    void tearDown(void);tearDown1239,39204
+void UnityDefaultTestRun(UnityTestFunction Func, const char* FuncName, const int FuncLineNum)UnityDefaultTestRun1242,39286
+void UnityBegin(const char* filename)UnityBegin1260,39745
+int UnityEnd(void)UnityEnd1275,40118
+
+test/vendor/unity.h,13966
+#define UNITY_FRAMEWORK_HUNITY_FRAMEWORK_H8,309
+#define UNITYUNITY9,335
+#define TEST_FAIL_MESSAGE(TEST_FAIL_MESSAGE57,2941
+#define TEST_FAIL(TEST_FAIL58,3075
+#define TEST_IGNORE_MESSAGE(TEST_IGNORE_MESSAGE59,3206
+#define TEST_IGNORE(TEST_IGNORE60,3342
+#define TEST_ONLY(TEST_ONLY61,3475
+#define TEST_ASSERT(TEST_ASSERT68,3648
+#define TEST_ASSERT_TRUE(TEST_ASSERT_TRUE69,3829
+#define TEST_ASSERT_UNLESS(TEST_ASSERT_UNLESS70,4004
+#define TEST_ASSERT_FALSE(TEST_ASSERT_FALSE71,4184
+#define TEST_ASSERT_NULL(TEST_ASSERT_NULL72,4359
+#define TEST_ASSERT_NOT_NULL(TEST_ASSERT_NOT_NULL73,4524
+#define TEST_ASSERT_EQUAL_INT(TEST_ASSERT_EQUAL_INT76,4720
+#define TEST_ASSERT_EQUAL_INT8(TEST_ASSERT_EQUAL_INT877,4885
+#define TEST_ASSERT_EQUAL_INT16(TEST_ASSERT_EQUAL_INT1678,5051
+#define TEST_ASSERT_EQUAL_INT32(TEST_ASSERT_EQUAL_INT3279,5218
+#define TEST_ASSERT_EQUAL_INT64(TEST_ASSERT_EQUAL_INT6480,5385
+#define TEST_ASSERT_EQUAL(TEST_ASSERT_EQUAL81,5552
+#define TEST_ASSERT_NOT_EQUAL(TEST_ASSERT_NOT_EQUAL82,5717
+#define TEST_ASSERT_EQUAL_UINT(TEST_ASSERT_EQUAL_UINT83,5894
+#define TEST_ASSERT_EQUAL_UINT8(TEST_ASSERT_EQUAL_UINT884,6061
+#define TEST_ASSERT_EQUAL_UINT16(TEST_ASSERT_EQUAL_UINT1685,6229
+#define TEST_ASSERT_EQUAL_UINT32(TEST_ASSERT_EQUAL_UINT3286,6398
+#define TEST_ASSERT_EQUAL_UINT64(TEST_ASSERT_EQUAL_UINT6487,6567
+#define TEST_ASSERT_EQUAL_HEX(TEST_ASSERT_EQUAL_HEX88,6736
+#define TEST_ASSERT_EQUAL_HEX8(TEST_ASSERT_EQUAL_HEX889,6903
+#define TEST_ASSERT_EQUAL_HEX16(TEST_ASSERT_EQUAL_HEX1690,7070
+#define TEST_ASSERT_EQUAL_HEX32(TEST_ASSERT_EQUAL_HEX3291,7237
+#define TEST_ASSERT_EQUAL_HEX64(TEST_ASSERT_EQUAL_HEX6492,7404
+#define TEST_ASSERT_BITS(TEST_ASSERT_BITS93,7571
+#define TEST_ASSERT_BITS_HIGH(TEST_ASSERT_BITS_HIGH94,7739
+#define TEST_ASSERT_BITS_LOW(TEST_ASSERT_BITS_LOW95,7908
+#define TEST_ASSERT_BIT_HIGH(TEST_ASSERT_BIT_HIGH96,8076
+#define TEST_ASSERT_BIT_LOW(TEST_ASSERT_BIT_LOW97,8256
+#define TEST_ASSERT_INT_WITHIN(TEST_ASSERT_INT_WITHIN100,8468
+#define TEST_ASSERT_INT8_WITHIN(TEST_ASSERT_INT8_WITHIN101,8637
+#define TEST_ASSERT_INT16_WITHIN(TEST_ASSERT_INT16_WITHIN102,8807
+#define TEST_ASSERT_INT32_WITHIN(TEST_ASSERT_INT32_WITHIN103,8978
+#define TEST_ASSERT_INT64_WITHIN(TEST_ASSERT_INT64_WITHIN104,9149
+#define TEST_ASSERT_UINT_WITHIN(TEST_ASSERT_UINT_WITHIN105,9320
+#define TEST_ASSERT_UINT8_WITHIN(TEST_ASSERT_UINT8_WITHIN106,9490
+#define TEST_ASSERT_UINT16_WITHIN(TEST_ASSERT_UINT16_WITHIN107,9661
+#define TEST_ASSERT_UINT32_WITHIN(TEST_ASSERT_UINT32_WITHIN108,9833
+#define TEST_ASSERT_UINT64_WITHIN(TEST_ASSERT_UINT64_WITHIN109,10005
+#define TEST_ASSERT_HEX_WITHIN(TEST_ASSERT_HEX_WITHIN110,10177
+#define TEST_ASSERT_HEX8_WITHIN(TEST_ASSERT_HEX8_WITHIN111,10348
+#define TEST_ASSERT_HEX16_WITHIN(TEST_ASSERT_HEX16_WITHIN112,10518
+#define TEST_ASSERT_HEX32_WITHIN(TEST_ASSERT_HEX32_WITHIN113,10689
+#define TEST_ASSERT_HEX64_WITHIN(TEST_ASSERT_HEX64_WITHIN114,10860
+#define TEST_ASSERT_EQUAL_PTR(TEST_ASSERT_EQUAL_PTR117,11054
+#define TEST_ASSERT_EQUAL_STRING(TEST_ASSERT_EQUAL_STRING118,11219
+#define TEST_ASSERT_EQUAL_STRING_LEN(TEST_ASSERT_EQUAL_STRING_LEN119,11383
+#define TEST_ASSERT_EQUAL_MEMORY(TEST_ASSERT_EQUAL_MEMORY120,11556
+#define TEST_ASSERT_EQUAL_INT_ARRAY(TEST_ASSERT_EQUAL_INT_ARRAY123,11735
+#define TEST_ASSERT_EQUAL_INT8_ARRAY(TEST_ASSERT_EQUAL_INT8_ARRAY124,11916
+#define TEST_ASSERT_EQUAL_INT16_ARRAY(TEST_ASSERT_EQUAL_INT16_ARRAY125,12098
+#define TEST_ASSERT_EQUAL_INT32_ARRAY(TEST_ASSERT_EQUAL_INT32_ARRAY126,12281
+#define TEST_ASSERT_EQUAL_INT64_ARRAY(TEST_ASSERT_EQUAL_INT64_ARRAY127,12464
+#define TEST_ASSERT_EQUAL_UINT_ARRAY(TEST_ASSERT_EQUAL_UINT_ARRAY128,12647
+#define TEST_ASSERT_EQUAL_UINT8_ARRAY(TEST_ASSERT_EQUAL_UINT8_ARRAY129,12829
+#define TEST_ASSERT_EQUAL_UINT16_ARRAY(TEST_ASSERT_EQUAL_UINT16_ARRAY130,13012
+#define TEST_ASSERT_EQUAL_UINT32_ARRAY(TEST_ASSERT_EQUAL_UINT32_ARRAY131,13196
+#define TEST_ASSERT_EQUAL_UINT64_ARRAY(TEST_ASSERT_EQUAL_UINT64_ARRAY132,13380
+#define TEST_ASSERT_EQUAL_HEX_ARRAY(TEST_ASSERT_EQUAL_HEX_ARRAY133,13564
+#define TEST_ASSERT_EQUAL_HEX8_ARRAY(TEST_ASSERT_EQUAL_HEX8_ARRAY134,13747
+#define TEST_ASSERT_EQUAL_HEX16_ARRAY(TEST_ASSERT_EQUAL_HEX16_ARRAY135,13929
+#define TEST_ASSERT_EQUAL_HEX32_ARRAY(TEST_ASSERT_EQUAL_HEX32_ARRAY136,14112
+#define TEST_ASSERT_EQUAL_HEX64_ARRAY(TEST_ASSERT_EQUAL_HEX64_ARRAY137,14295
+#define TEST_ASSERT_EQUAL_PTR_ARRAY(TEST_ASSERT_EQUAL_PTR_ARRAY138,14478
+#define TEST_ASSERT_EQUAL_STRING_ARRAY(TEST_ASSERT_EQUAL_STRING_ARRAY139,14659
+#define TEST_ASSERT_EQUAL_MEMORY_ARRAY(TEST_ASSERT_EQUAL_MEMORY_ARRAY140,14843
+#define TEST_ASSERT_FLOAT_WITHIN(TEST_ASSERT_FLOAT_WITHIN143,15063
+#define TEST_ASSERT_EQUAL_FLOAT(TEST_ASSERT_EQUAL_FLOAT144,15234
+#define TEST_ASSERT_EQUAL_FLOAT_ARRAY(TEST_ASSERT_EQUAL_FLOAT_ARRAY145,15397
+#define TEST_ASSERT_FLOAT_IS_INF(TEST_ASSERT_FLOAT_IS_INF146,15580
+#define TEST_ASSERT_FLOAT_IS_NEG_INF(TEST_ASSERT_FLOAT_IS_NEG_INF147,15734
+#define TEST_ASSERT_FLOAT_IS_NAN(TEST_ASSERT_FLOAT_IS_NAN148,15892
+#define TEST_ASSERT_FLOAT_IS_DETERMINATE(TEST_ASSERT_FLOAT_IS_DETERMINATE149,16046
+#define TEST_ASSERT_FLOAT_IS_NOT_INF(TEST_ASSERT_FLOAT_IS_NOT_INF150,16208
+#define TEST_ASSERT_FLOAT_IS_NOT_NEG_INF(TEST_ASSERT_FLOAT_IS_NOT_NEG_INF151,16366
+#define TEST_ASSERT_FLOAT_IS_NOT_NAN(TEST_ASSERT_FLOAT_IS_NOT_NAN152,16528
+#define TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE(TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE153,16686
+#define TEST_ASSERT_DOUBLE_WITHIN(TEST_ASSERT_DOUBLE_WITHIN156,16875
+#define TEST_ASSERT_EQUAL_DOUBLE(TEST_ASSERT_EQUAL_DOUBLE157,17047
+#define TEST_ASSERT_EQUAL_DOUBLE_ARRAY(TEST_ASSERT_EQUAL_DOUBLE_ARRAY158,17211
+#define TEST_ASSERT_DOUBLE_IS_INF(TEST_ASSERT_DOUBLE_IS_INF159,17395
+#define TEST_ASSERT_DOUBLE_IS_NEG_INF(TEST_ASSERT_DOUBLE_IS_NEG_INF160,17550
+#define TEST_ASSERT_DOUBLE_IS_NAN(TEST_ASSERT_DOUBLE_IS_NAN161,17709
+#define TEST_ASSERT_DOUBLE_IS_DETERMINATE(TEST_ASSERT_DOUBLE_IS_DETERMINATE162,17864
+#define TEST_ASSERT_DOUBLE_IS_NOT_INF(TEST_ASSERT_DOUBLE_IS_NOT_INF163,18027
+#define TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF(TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF164,18186
+#define TEST_ASSERT_DOUBLE_IS_NOT_NAN(TEST_ASSERT_DOUBLE_IS_NOT_NAN165,18349
+#define TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE(TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE166,18508
+#define TEST_ASSERT_MESSAGE(TEST_ASSERT_MESSAGE173,18846
+#define TEST_ASSERT_TRUE_MESSAGE(TEST_ASSERT_TRUE_MESSAGE174,19002
+#define TEST_ASSERT_UNLESS_MESSAGE(TEST_ASSERT_UNLESS_MESSAGE175,19158
+#define TEST_ASSERT_FALSE_MESSAGE(TEST_ASSERT_FALSE_MESSAGE176,19314
+#define TEST_ASSERT_NULL_MESSAGE(TEST_ASSERT_NULL_MESSAGE177,19470
+#define TEST_ASSERT_NOT_NULL_MESSAGE(TEST_ASSERT_NOT_NULL_MESSAGE178,19626
+#define TEST_ASSERT_EQUAL_INT_MESSAGE(TEST_ASSERT_EQUAL_INT_MESSAGE181,19809
+#define TEST_ASSERT_EQUAL_INT8_MESSAGE(TEST_ASSERT_EQUAL_INT8_MESSAGE182,19977
+#define TEST_ASSERT_EQUAL_INT16_MESSAGE(TEST_ASSERT_EQUAL_INT16_MESSAGE183,20146
+#define TEST_ASSERT_EQUAL_INT32_MESSAGE(TEST_ASSERT_EQUAL_INT32_MESSAGE184,20316
+#define TEST_ASSERT_EQUAL_INT64_MESSAGE(TEST_ASSERT_EQUAL_INT64_MESSAGE185,20486
+#define TEST_ASSERT_EQUAL_MESSAGE(TEST_ASSERT_EQUAL_MESSAGE186,20656
+#define TEST_ASSERT_NOT_EQUAL_MESSAGE(TEST_ASSERT_NOT_EQUAL_MESSAGE187,20824
+#define TEST_ASSERT_EQUAL_UINT_MESSAGE(TEST_ASSERT_EQUAL_UINT_MESSAGE188,20987
+#define TEST_ASSERT_EQUAL_UINT8_MESSAGE(TEST_ASSERT_EQUAL_UINT8_MESSAGE189,21157
+#define TEST_ASSERT_EQUAL_UINT16_MESSAGE(TEST_ASSERT_EQUAL_UINT16_MESSAGE190,21328
+#define TEST_ASSERT_EQUAL_UINT32_MESSAGE(TEST_ASSERT_EQUAL_UINT32_MESSAGE191,21500
+#define TEST_ASSERT_EQUAL_UINT64_MESSAGE(TEST_ASSERT_EQUAL_UINT64_MESSAGE192,21672
+#define TEST_ASSERT_EQUAL_HEX_MESSAGE(TEST_ASSERT_EQUAL_HEX_MESSAGE193,21844
+#define TEST_ASSERT_EQUAL_HEX8_MESSAGE(TEST_ASSERT_EQUAL_HEX8_MESSAGE194,22014
+#define TEST_ASSERT_EQUAL_HEX16_MESSAGE(TEST_ASSERT_EQUAL_HEX16_MESSAGE195,22184
+#define TEST_ASSERT_EQUAL_HEX32_MESSAGE(TEST_ASSERT_EQUAL_HEX32_MESSAGE196,22354
+#define TEST_ASSERT_EQUAL_HEX64_MESSAGE(TEST_ASSERT_EQUAL_HEX64_MESSAGE197,22524
+#define TEST_ASSERT_BITS_MESSAGE(TEST_ASSERT_BITS_MESSAGE198,22694
+#define TEST_ASSERT_BITS_HIGH_MESSAGE(TEST_ASSERT_BITS_HIGH_MESSAGE199,22865
+#define TEST_ASSERT_BITS_LOW_MESSAGE(TEST_ASSERT_BITS_LOW_MESSAGE200,23037
+#define TEST_ASSERT_BIT_HIGH_MESSAGE(TEST_ASSERT_BIT_HIGH_MESSAGE201,23208
+#define TEST_ASSERT_BIT_LOW_MESSAGE(TEST_ASSERT_BIT_LOW_MESSAGE202,23391
+#define TEST_ASSERT_INT_WITHIN_MESSAGE(TEST_ASSERT_INT_WITHIN_MESSAGE205,23606
+#define TEST_ASSERT_INT8_WITHIN_MESSAGE(TEST_ASSERT_INT8_WITHIN_MESSAGE206,23778
+#define TEST_ASSERT_INT16_WITHIN_MESSAGE(TEST_ASSERT_INT16_WITHIN_MESSAGE207,23951
+#define TEST_ASSERT_INT32_WITHIN_MESSAGE(TEST_ASSERT_INT32_WITHIN_MESSAGE208,24125
+#define TEST_ASSERT_INT64_WITHIN_MESSAGE(TEST_ASSERT_INT64_WITHIN_MESSAGE209,24299
+#define TEST_ASSERT_UINT_WITHIN_MESSAGE(TEST_ASSERT_UINT_WITHIN_MESSAGE210,24473
+#define TEST_ASSERT_UINT8_WITHIN_MESSAGE(TEST_ASSERT_UINT8_WITHIN_MESSAGE211,24646
+#define TEST_ASSERT_UINT16_WITHIN_MESSAGE(TEST_ASSERT_UINT16_WITHIN_MESSAGE212,24820
+#define TEST_ASSERT_UINT32_WITHIN_MESSAGE(TEST_ASSERT_UINT32_WITHIN_MESSAGE213,24995
+#define TEST_ASSERT_UINT64_WITHIN_MESSAGE(TEST_ASSERT_UINT64_WITHIN_MESSAGE214,25170
+#define TEST_ASSERT_HEX_WITHIN_MESSAGE(TEST_ASSERT_HEX_WITHIN_MESSAGE215,25345
+#define TEST_ASSERT_HEX8_WITHIN_MESSAGE(TEST_ASSERT_HEX8_WITHIN_MESSAGE216,25519
+#define TEST_ASSERT_HEX16_WITHIN_MESSAGE(TEST_ASSERT_HEX16_WITHIN_MESSAGE217,25692
+#define TEST_ASSERT_HEX32_WITHIN_MESSAGE(TEST_ASSERT_HEX32_WITHIN_MESSAGE218,25866
+#define TEST_ASSERT_HEX64_WITHIN_MESSAGE(TEST_ASSERT_HEX64_WITHIN_MESSAGE219,26040
+#define TEST_ASSERT_EQUAL_PTR_MESSAGE(TEST_ASSERT_EQUAL_PTR_MESSAGE222,26237
+#define TEST_ASSERT_EQUAL_STRING_MESSAGE(TEST_ASSERT_EQUAL_STRING_MESSAGE223,26401
+#define TEST_ASSERT_EQUAL_STRING_LEN_MESSAGE(TEST_ASSERT_EQUAL_STRING_LEN_MESSAGE224,26568
+#define TEST_ASSERT_EQUAL_MEMORY_MESSAGE(TEST_ASSERT_EQUAL_MEMORY_MESSAGE225,26744
+#define TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_INT_ARRAY_MESSAGE228,26926
+#define TEST_ASSERT_EQUAL_INT8_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_INT8_ARRAY_MESSAGE229,27110
+#define TEST_ASSERT_EQUAL_INT16_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_INT16_ARRAY_MESSAGE230,27295
+#define TEST_ASSERT_EQUAL_INT32_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_INT32_ARRAY_MESSAGE231,27481
+#define TEST_ASSERT_EQUAL_INT64_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_INT64_ARRAY_MESSAGE232,27667
+#define TEST_ASSERT_EQUAL_UINT_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_UINT_ARRAY_MESSAGE233,27853
+#define TEST_ASSERT_EQUAL_UINT8_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_UINT8_ARRAY_MESSAGE234,28038
+#define TEST_ASSERT_EQUAL_UINT16_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_UINT16_ARRAY_MESSAGE235,28224
+#define TEST_ASSERT_EQUAL_UINT32_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_UINT32_ARRAY_MESSAGE236,28411
+#define TEST_ASSERT_EQUAL_UINT64_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_UINT64_ARRAY_MESSAGE237,28598
+#define TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_HEX_ARRAY_MESSAGE238,28785
+#define TEST_ASSERT_EQUAL_HEX8_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_HEX8_ARRAY_MESSAGE239,28971
+#define TEST_ASSERT_EQUAL_HEX16_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_HEX16_ARRAY_MESSAGE240,29156
+#define TEST_ASSERT_EQUAL_HEX32_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_HEX32_ARRAY_MESSAGE241,29342
+#define TEST_ASSERT_EQUAL_HEX64_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_HEX64_ARRAY_MESSAGE242,29528
+#define TEST_ASSERT_EQUAL_PTR_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_PTR_ARRAY_MESSAGE243,29714
+#define TEST_ASSERT_EQUAL_STRING_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_STRING_ARRAY_MESSAGE244,29898
+#define TEST_ASSERT_EQUAL_MEMORY_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_MEMORY_ARRAY_MESSAGE245,30085
+#define TEST_ASSERT_FLOAT_WITHIN_MESSAGE(TEST_ASSERT_FLOAT_WITHIN_MESSAGE248,30308
+#define TEST_ASSERT_EQUAL_FLOAT_MESSAGE(TEST_ASSERT_EQUAL_FLOAT_MESSAGE249,30482
+#define TEST_ASSERT_EQUAL_FLOAT_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_FLOAT_ARRAY_MESSAGE250,30648
+#define TEST_ASSERT_FLOAT_IS_INF_MESSAGE(TEST_ASSERT_FLOAT_IS_INF_MESSAGE251,30834
+#define TEST_ASSERT_FLOAT_IS_NEG_INF_MESSAGE(TEST_ASSERT_FLOAT_IS_NEG_INF_MESSAGE252,30991
+#define TEST_ASSERT_FLOAT_IS_NAN_MESSAGE(TEST_ASSERT_FLOAT_IS_NAN_MESSAGE253,31152
+#define TEST_ASSERT_FLOAT_IS_DETERMINATE_MESSAGE(TEST_ASSERT_FLOAT_IS_DETERMINATE_MESSAGE254,31309
+#define TEST_ASSERT_FLOAT_IS_NOT_INF_MESSAGE(TEST_ASSERT_FLOAT_IS_NOT_INF_MESSAGE255,31474
+#define TEST_ASSERT_FLOAT_IS_NOT_NEG_INF_MESSAGE(TEST_ASSERT_FLOAT_IS_NOT_NEG_INF_MESSAGE256,31635
+#define TEST_ASSERT_FLOAT_IS_NOT_NAN_MESSAGE(TEST_ASSERT_FLOAT_IS_NOT_NAN_MESSAGE257,31800
+#define TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE_MESSAGE(TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE_MESSAGE258,31961
+#define TEST_ASSERT_DOUBLE_WITHIN_MESSAGE(TEST_ASSERT_DOUBLE_WITHIN_MESSAGE261,32153
+#define TEST_ASSERT_EQUAL_DOUBLE_MESSAGE(TEST_ASSERT_EQUAL_DOUBLE_MESSAGE262,32328
+#define TEST_ASSERT_EQUAL_DOUBLE_ARRAY_MESSAGE(TEST_ASSERT_EQUAL_DOUBLE_ARRAY_MESSAGE263,32495
+#define TEST_ASSERT_DOUBLE_IS_INF_MESSAGE(TEST_ASSERT_DOUBLE_IS_INF_MESSAGE264,32682
+#define TEST_ASSERT_DOUBLE_IS_NEG_INF_MESSAGE(TEST_ASSERT_DOUBLE_IS_NEG_INF_MESSAGE265,32840
+#define TEST_ASSERT_DOUBLE_IS_NAN_MESSAGE(TEST_ASSERT_DOUBLE_IS_NAN_MESSAGE266,33002
+#define TEST_ASSERT_DOUBLE_IS_DETERMINATE_MESSAGE(TEST_ASSERT_DOUBLE_IS_DETERMINATE_MESSAGE267,33160
+#define TEST_ASSERT_DOUBLE_IS_NOT_INF_MESSAGE(TEST_ASSERT_DOUBLE_IS_NOT_INF_MESSAGE268,33326
+#define TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF_MESSAGE(TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF_MESSAGE269,33488
+#define TEST_ASSERT_DOUBLE_IS_NOT_NAN_MESSAGE(TEST_ASSERT_DOUBLE_IS_NOT_NAN_MESSAGE270,33654
+#define TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE_MESSAGE(TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE_MESSAGE271,33816
+
+test/vendor/unity_internals.h,19436
+#define UNITY_INTERNALS_HUNITY_INTERNALS_H8,309
+#define UINT_MAX UINT_MAX30,781
+#define ULONG_MAX ULONG_MAX33,860
+      #define UNITY_INT_WIDTH UNITY_INT_WIDTH50,1525
+      #define UNITY_INT_WIDTH UNITY_INT_WIDTH52,1595
+      #define UNITY_INT_WIDTH UNITY_INT_WIDTH54,1673
+  #define UNITY_INT_WIDTH UNITY_INT_WIDTH59,1759
+      #define UNITY_LONG_WIDTH UNITY_LONG_WIDTH68,2000
+      #define UNITY_LONG_WIDTH UNITY_LONG_WIDTH70,2072
+      #define UNITY_LONG_WIDTH UNITY_LONG_WIDTH72,2152
+  #define UNITY_LONG_WIDTH UNITY_LONG_WIDTH77,2240
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH86,2494
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH88,2573
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH90,2660
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH97,2807
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH99,2885
+      #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH101,2971
+  #define UNITY_POINTER_WIDTH UNITY_POINTER_WIDTH106,3065
+    typedef unsigned char   _UU8;_UU8114,3319
+    typedef unsigned short  _UU16;_UU16115,3353
+    typedef unsigned int    _UU32;_UU32116,3388
+    typedef signed char     _US8;_US8117,3423
+    typedef signed short    _US16;_US16118,3457
+    typedef signed int      _US32;_US32119,3492
+    typedef unsigned char   _UU8;_UU8121,3557
+    typedef unsigned int    _UU16;_UU16122,3591
+    typedef unsigned long   _UU32;_UU32123,3626
+    typedef signed char     _US8;_US8124,3661
+    typedef signed int      _US16;_US16125,3695
+    typedef signed long     _US32;_US32126,3730
+#define UNITY_SUPPORT_64UNITY_SUPPORT_64137,4036
+#define UNITY_SUPPORT_64UNITY_SUPPORT_64142,4129
+typedef _UU32 _U_UINT;_U_UINT149,4215
+typedef _US32 _U_SINT;_U_SINT150,4238
+    typedef unsigned long long _UU64;_UU64156,4315
+    typedef signed long long   _US64;_US64157,4353
+    typedef unsigned long      _UU64;_UU64159,4422
+    typedef signed long        _US64;_US64160,4460
+typedef _UU64 _U_UINT;_U_UINT164,4583
+typedef _US64 _U_SINT;_U_SINT165,4606
+    typedef _UU32 _UP;_UP174,4806
+#define UNITY_DISPLAY_STYLE_POINTER UNITY_DISPLAY_STYLE_POINTER175,4829
+    typedef _UU64 _UP;_UP177,4925
+#define UNITY_DISPLAY_STYLE_POINTER UNITY_DISPLAY_STYLE_POINTER178,4948
+    typedef _UU16 _UP;_UP180,5044
+#define UNITY_DISPLAY_STYLE_POINTER UNITY_DISPLAY_STYLE_POINTER181,5067
+  #define UNITY_PTR_ATTRIBUTEUNITY_PTR_ATTRIBUTE187,5250
+#undef UNITY_INCLUDE_FLOATUNITY_INCLUDE_FLOAT197,5478
+#undef UNITY_FLOAT_PRECISIONUNITY_FLOAT_PRECISION198,5505
+#undef UNITY_FLOAT_TYPEUNITY_FLOAT_TYPE199,5534
+#undef UNITY_FLOAT_VERBOSEUNITY_FLOAT_VERBOSE200,5558
+#define UNITY_INCLUDE_FLOATUNITY_INCLUDE_FLOAT205,5621
+#define UNITY_FLOAT_PRECISION UNITY_FLOAT_PRECISION210,5712
+#define UNITY_FLOAT_TYPE UNITY_FLOAT_TYPE213,5785
+typedef UNITY_FLOAT_TYPE _UF;_UF215,5823
+#define UNITY_EXCLUDE_DOUBLEUNITY_EXCLUDE_DOUBLE226,6105
+#undef UNITY_DOUBLE_PRECISIONUNITY_DOUBLE_PRECISION233,6206
+#undef UNITY_DOUBLE_TYPEUNITY_DOUBLE_TYPE234,6236
+#undef UNITY_DOUBLE_VERBOSEUNITY_DOUBLE_VERBOSE235,6261
+#undef UNITY_INCLUDE_DOUBLEUNITY_INCLUDE_DOUBLE238,6318
+#define UNITY_DOUBLE_PRECISION UNITY_DOUBLE_PRECISION245,6424
+#define UNITY_DOUBLE_TYPE UNITY_DOUBLE_TYPE248,6497
+typedef UNITY_DOUBLE_TYPE _UD;_UD250,6537
+#define UNITY_FLOAT_VERBOSEUNITY_FLOAT_VERBOSE256,6633
+#define UNITY_OUTPUT_CHAR(UNITY_OUTPUT_CHAR266,6928
+extern int UNITY_OUTPUT_CHAR(int);UNITY_OUTPUT_CHAR269,7057
+#define UNITY_OUTPUT_START(UNITY_OUTPUT_START273,7127
+#define UNITY_OUTPUT_COMPLETE(UNITY_OUTPUT_COMPLETE277,7194
+#define UNITY_LINE_TYPE UNITY_LINE_TYPE285,7388
+#define UNITY_COUNTER_TYPE UNITY_COUNTER_TYPE289,7455
+#           define UNITY_WEAK_ATTRIBUTE UNITY_WEAK_ATTRIBUTE298,7803
+#   undef UNITY_WEAK_ATTRIBUTEUNITY_WEAK_ATTRIBUTE304,7918
+#   undef UNITY_WEAK_PRAGMAUNITY_WEAK_PRAGMA305,7949
+typedef void (*UnityTestFunction)(void);UnityTestFunction313,8130
+#define UNITY_DISPLAY_RANGE_INT UNITY_DISPLAY_RANGE_INT315,8172
+#define UNITY_DISPLAY_RANGE_UINT UNITY_DISPLAY_RANGE_UINT316,8212
+#define UNITY_DISPLAY_RANGE_HEX UNITY_DISPLAY_RANGE_HEX317,8252
+#define UNITY_DISPLAY_RANGE_AUTO UNITY_DISPLAY_RANGE_AUTO318,8292
+    UNITY_DISPLAY_STYLE_INT      = 2 + UNITY_DISPLAY_RANGE_INT + UNITY_DISPLAY_RANGE_AUTO,UNITY_DISPLAY_STYLE_INT323,8376
+    UNITY_DISPLAY_STYLE_INT8     = 1 + UNITY_DISPLAY_RANGE_INT,UNITY_DISPLAY_STYLE_INT8329,8718
+    UNITY_DISPLAY_STYLE_INT16    = 2 + UNITY_DISPLAY_RANGE_INT,UNITY_DISPLAY_STYLE_INT16330,8782
+    UNITY_DISPLAY_STYLE_INT32    = 4 + UNITY_DISPLAY_RANGE_INT,UNITY_DISPLAY_STYLE_INT32331,8846
+    UNITY_DISPLAY_STYLE_INT64    = 8 + UNITY_DISPLAY_RANGE_INT,UNITY_DISPLAY_STYLE_INT64333,8934
+    UNITY_DISPLAY_STYLE_UINT     = 2 + UNITY_DISPLAY_RANGE_UINT + UNITY_DISPLAY_RANGE_AUTO,UNITY_DISPLAY_STYLE_UINT337,9034
+    UNITY_DISPLAY_STYLE_UINT8    = 1 + UNITY_DISPLAY_RANGE_UINT,UNITY_DISPLAY_STYLE_UINT8343,9379
+    UNITY_DISPLAY_STYLE_UINT16   = 2 + UNITY_DISPLAY_RANGE_UINT,UNITY_DISPLAY_STYLE_UINT16344,9444
+    UNITY_DISPLAY_STYLE_UINT32   = 4 + UNITY_DISPLAY_RANGE_UINT,UNITY_DISPLAY_STYLE_UINT32345,9509
+    UNITY_DISPLAY_STYLE_UINT64   = 8 + UNITY_DISPLAY_RANGE_UINT,UNITY_DISPLAY_STYLE_UINT64347,9598
+    UNITY_DISPLAY_STYLE_HEX8     = 1 + UNITY_DISPLAY_RANGE_HEX,UNITY_DISPLAY_STYLE_HEX8349,9670
+    UNITY_DISPLAY_STYLE_HEX16    = 2 + UNITY_DISPLAY_RANGE_HEX,UNITY_DISPLAY_STYLE_HEX16350,9734
+    UNITY_DISPLAY_STYLE_HEX32    = 4 + UNITY_DISPLAY_RANGE_HEX,UNITY_DISPLAY_STYLE_HEX32351,9798
+    UNITY_DISPLAY_STYLE_HEX64    = 8 + UNITY_DISPLAY_RANGE_HEX,UNITY_DISPLAY_STYLE_HEX64353,9886
+    UNITY_DISPLAY_STYLE_UNKNOWNUNITY_DISPLAY_STYLE_UNKNOWN355,9957
+} UNITY_DISPLAY_STYLE_T;UNITY_DISPLAY_STYLE_T356,9989
+typedef enum _UNITY_FLOAT_TRAIT_T_UNITY_FLOAT_TRAIT_T359,10043
+    UNITY_FLOAT_IS_NOT_INF       = 0,UNITY_FLOAT_IS_NOT_INF361,10079
+    UNITY_FLOAT_IS_INF,UNITY_FLOAT_IS_INF362,10117
+    UNITY_FLOAT_IS_NOT_NEG_INF,UNITY_FLOAT_IS_NOT_NEG_INF363,10141
+    UNITY_FLOAT_IS_NEG_INF,UNITY_FLOAT_IS_NEG_INF364,10173
+    UNITY_FLOAT_IS_NOT_NAN,UNITY_FLOAT_IS_NOT_NAN365,10201
+    UNITY_FLOAT_IS_NAN,UNITY_FLOAT_IS_NAN366,10229
+    UNITY_FLOAT_IS_NOT_DET,UNITY_FLOAT_IS_NOT_DET367,10253
+    UNITY_FLOAT_IS_DET,UNITY_FLOAT_IS_DET368,10281
+} UNITY_FLOAT_TRAIT_T;UNITY_FLOAT_TRAIT_T369,10305
+struct _Unity_Unity372,10336
+    const char* TestFile;TestFile374,10352
+    const char* CurrentTestName;CurrentTestName375,10378
+    UNITY_LINE_TYPE CurrentTestLineNumber;CurrentTestLineNumber376,10411
+    UNITY_COUNTER_TYPE NumberOfTests;NumberOfTests377,10454
+    UNITY_COUNTER_TYPE TestFailures;TestFailures378,10492
+    UNITY_COUNTER_TYPE TestIgnores;TestIgnores379,10529
+    UNITY_COUNTER_TYPE CurrentTestFailed;CurrentTestFailed380,10565
+    UNITY_COUNTER_TYPE CurrentTestIgnored;CurrentTestIgnored381,10607
+    jmp_buf AbortFrame;AbortFrame382,10650
+extern struct _Unity Unity;Unity385,10678
+void UnityBegin(const char* filename);UnityBegin391,10849
+int  UnityEnd(void);UnityEnd392,10888
+void UnityConcludeTest(void);UnityConcludeTest393,10909
+void UnityDefaultTestRun(UnityTestFunction Func, const char* FuncName, const int FuncLineNum);UnityDefaultTestRun394,10939
+void UnityPrint(const char* string);UnityPrint400,11167
+void UnityPrintMask(const _U_UINT mask, const _U_UINT number);UnityPrintMask401,11204
+void UnityPrintNumberByStyle(const _U_SINT number, const UNITY_DISPLAY_STYLE_T style);UnityPrintNumberByStyle402,11267
+void UnityPrintNumber(const _U_SINT number);UnityPrintNumber403,11354
+void UnityPrintNumberUnsigned(const _U_UINT number);UnityPrintNumberUnsigned404,11399
+void UnityPrintNumberHex(const _U_UINT number, const char nibbles);UnityPrintNumberHex405,11452
+void UnityPrintFloat(const _UF number);UnityPrintFloat408,11548
+void UnityAssertEqualNumber(const _U_SINT expected,UnityAssertEqualNumber419,11924
+void UnityAssertEqualIntArray(UNITY_PTR_ATTRIBUTE const void* expected,UnityAssertEqualIntArray425,12198
+void UnityAssertBits(const _U_SINT mask,UnityAssertBits432,12574
+void UnityAssertEqualString(const char* expected,UnityAssertEqualString438,12798
+void UnityAssertEqualStringLen(const char* expected,UnityAssertEqualStringLen443,13005
+void UnityAssertEqualStringArray( const char** expected,UnityAssertEqualStringArray449,13263
+void UnityAssertEqualMemory( UNITY_PTR_ATTRIBUTE const void* expected,UnityAssertEqualMemory455,13556
+void UnityAssertNumbersWithin(const _U_SINT delta,UnityAssertNumbersWithin462,13911
+void UnityFail(const char* message, const UNITY_LINE_TYPE line);UnityFail469,14246
+void UnityIgnore(const char* message, const UNITY_LINE_TYPE line);UnityIgnore471,14312
+void UnityAssertFloatsWithin(const _UF delta,UnityAssertFloatsWithin474,14408
+void UnityAssertEqualFloatArray(UNITY_PTR_ATTRIBUTE const _UF* expected,UnityAssertEqualFloatArray480,14661
+void UnityAssertFloatSpecial(const _UF actual,UnityAssertFloatSpecial486,14980
+void UnityAssertDoublesWithin(const _UD delta,UnityAssertDoublesWithin493,15236
+void UnityAssertEqualDoubleArray(UNITY_PTR_ATTRIBUTE const _UD* expected,UnityAssertEqualDoubleArray499,15494
+void UnityAssertDoubleSpecial(const _UD actual,UnityAssertDoubleSpecial505,15818
+extern const char UnityStrErrFloat[];UnityStrErrFloat515,16197
+extern const char UnityStrErrDouble[];UnityStrErrDouble516,16235
+extern const char UnityStrErr64[];UnityStrErr64517,16274
+#define TEST_PROTECT(TEST_PROTECT523,16450
+#define TEST_ABORT(TEST_ABORT525,16506
+#define RUN_TEST(RUN_TEST531,16743
+#define RUN_TEST_FIRST(RUN_TEST_FIRST532,16844
+#define RUN_TEST_FIRST_HELPER(RUN_TEST_FIRST_HELPER533,16918
+#define RUN_TEST_SECOND(RUN_TEST_SECOND534,16973
+#define RUN_TEST_SECOND_HELPER(RUN_TEST_SECOND_HELPER535,17059
+#define RUN_TEST(RUN_TEST543,17270
+#define RUN_TEST(RUN_TEST545,17342
+#define TEST_LINE_NUM TEST_LINE_NUM549,17423
+#define TEST_IS_IGNORED TEST_IS_IGNORED550,17475
+#define UNITY_NEW_TEST(UNITY_NEW_TEST551,17526
+#define UNITY_BEGIN(UNITY_BEGIN557,17700
+#define UNITY_END(UNITY_END561,17769
+#define UNITY_UNUSED(UNITY_UNUSED564,17808
+#define UNITY_TEST_FAIL(UNITY_TEST_FAIL570,17993
+#define UNITY_TEST_IGNORE(UNITY_TEST_IGNORE571,18082
+#define UNITY_TEST_ASSERT(UNITY_TEST_ASSERT577,18305
+#define UNITY_TEST_ASSERT_NULL(UNITY_TEST_ASSERT_NULL578,18476
+#define UNITY_TEST_ASSERT_NOT_NULL(UNITY_TEST_ASSERT_NOT_NULL579,18645
+#define UNITY_TEST_ASSERT_EQUAL_INT(UNITY_TEST_ASSERT_EQUAL_INT581,18815
+#define UNITY_TEST_ASSERT_EQUAL_INT8(UNITY_TEST_ASSERT_EQUAL_INT8582,19034
+#define UNITY_TEST_ASSERT_EQUAL_INT16(UNITY_TEST_ASSERT_EQUAL_INT16583,19268
+#define UNITY_TEST_ASSERT_EQUAL_INT32(UNITY_TEST_ASSERT_EQUAL_INT32584,19503
+#define UNITY_TEST_ASSERT_EQUAL_UINT(UNITY_TEST_ASSERT_EQUAL_UINT585,19738
+#define UNITY_TEST_ASSERT_EQUAL_UINT8(UNITY_TEST_ASSERT_EQUAL_UINT8586,19958
+#define UNITY_TEST_ASSERT_EQUAL_UINT16(UNITY_TEST_ASSERT_EQUAL_UINT16587,20193
+#define UNITY_TEST_ASSERT_EQUAL_UINT32(UNITY_TEST_ASSERT_EQUAL_UINT32588,20429
+#define UNITY_TEST_ASSERT_EQUAL_HEX8(UNITY_TEST_ASSERT_EQUAL_HEX8589,20665
+#define UNITY_TEST_ASSERT_EQUAL_HEX16(UNITY_TEST_ASSERT_EQUAL_HEX16590,20899
+#define UNITY_TEST_ASSERT_EQUAL_HEX32(UNITY_TEST_ASSERT_EQUAL_HEX32591,21134
+#define UNITY_TEST_ASSERT_BITS(UNITY_TEST_ASSERT_BITS592,21369
+#define UNITY_TEST_ASSERT_INT_WITHIN(UNITY_TEST_ASSERT_INT_WITHIN594,21574
+#define UNITY_TEST_ASSERT_INT8_WITHIN(UNITY_TEST_ASSERT_INT8_WITHIN595,21813
+#define UNITY_TEST_ASSERT_INT16_WITHIN(UNITY_TEST_ASSERT_INT16_WITHIN596,22074
+#define UNITY_TEST_ASSERT_INT32_WITHIN(UNITY_TEST_ASSERT_INT32_WITHIN597,22336
+#define UNITY_TEST_ASSERT_UINT_WITHIN(UNITY_TEST_ASSERT_UINT_WITHIN598,22598
+#define UNITY_TEST_ASSERT_UINT8_WITHIN(UNITY_TEST_ASSERT_UINT8_WITHIN599,22838
+#define UNITY_TEST_ASSERT_UINT16_WITHIN(UNITY_TEST_ASSERT_UINT16_WITHIN600,23127
+#define UNITY_TEST_ASSERT_UINT32_WITHIN(UNITY_TEST_ASSERT_UINT32_WITHIN601,23417
+#define UNITY_TEST_ASSERT_HEX8_WITHIN(UNITY_TEST_ASSERT_HEX8_WITHIN602,23707
+#define UNITY_TEST_ASSERT_HEX16_WITHIN(UNITY_TEST_ASSERT_HEX16_WITHIN603,23995
+#define UNITY_TEST_ASSERT_HEX32_WITHIN(UNITY_TEST_ASSERT_HEX32_WITHIN604,24284
+#define UNITY_TEST_ASSERT_EQUAL_PTR(UNITY_TEST_ASSERT_EQUAL_PTR606,24574
+#define UNITY_TEST_ASSERT_EQUAL_STRING(UNITY_TEST_ASSERT_EQUAL_STRING607,24807
+#define UNITY_TEST_ASSERT_EQUAL_STRING_LEN(UNITY_TEST_ASSERT_EQUAL_STRING_LEN608,25009
+#define UNITY_TEST_ASSERT_EQUAL_MEMORY(UNITY_TEST_ASSERT_EQUAL_MEMORY609,25228
+#define UNITY_TEST_ASSERT_EQUAL_INT_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT_ARRAY611,25476
+#define UNITY_TEST_ASSERT_EQUAL_INT8_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT8_ARRAY612,25768
+#define UNITY_TEST_ASSERT_EQUAL_INT16_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT16_ARRAY613,26061
+#define UNITY_TEST_ASSERT_EQUAL_INT32_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT32_ARRAY614,26355
+#define UNITY_TEST_ASSERT_EQUAL_UINT_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT_ARRAY615,26649
+#define UNITY_TEST_ASSERT_EQUAL_UINT8_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT8_ARRAY616,26942
+#define UNITY_TEST_ASSERT_EQUAL_UINT16_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT16_ARRAY617,27236
+#define UNITY_TEST_ASSERT_EQUAL_UINT32_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT32_ARRAY618,27531
+#define UNITY_TEST_ASSERT_EQUAL_HEX8_ARRAY(UNITY_TEST_ASSERT_EQUAL_HEX8_ARRAY619,27826
+#define UNITY_TEST_ASSERT_EQUAL_HEX16_ARRAY(UNITY_TEST_ASSERT_EQUAL_HEX16_ARRAY620,28119
+#define UNITY_TEST_ASSERT_EQUAL_HEX32_ARRAY(UNITY_TEST_ASSERT_EQUAL_HEX32_ARRAY621,28413
+#define UNITY_TEST_ASSERT_EQUAL_PTR_ARRAY(UNITY_TEST_ASSERT_EQUAL_PTR_ARRAY622,28707
+#define UNITY_TEST_ASSERT_EQUAL_STRING_ARRAY(UNITY_TEST_ASSERT_EQUAL_STRING_ARRAY623,28995
+#define UNITY_TEST_ASSERT_EQUAL_MEMORY_ARRAY(UNITY_TEST_ASSERT_EQUAL_MEMORY_ARRAY624,29227
+#define UNITY_TEST_ASSERT_EQUAL_INT64(UNITY_TEST_ASSERT_EQUAL_INT64627,29519
+#define UNITY_TEST_ASSERT_EQUAL_UINT64(UNITY_TEST_ASSERT_EQUAL_UINT64628,29740
+#define UNITY_TEST_ASSERT_EQUAL_HEX64(UNITY_TEST_ASSERT_EQUAL_HEX64629,29962
+#define UNITY_TEST_ASSERT_EQUAL_INT64_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT64_ARRAY630,30183
+#define UNITY_TEST_ASSERT_EQUAL_UINT64_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT64_ARRAY631,30483
+#define UNITY_TEST_ASSERT_EQUAL_HEX64_ARRAY(UNITY_TEST_ASSERT_EQUAL_HEX64_ARRAY632,30784
+#define UNITY_TEST_ASSERT_INT64_WITHIN(UNITY_TEST_ASSERT_INT64_WITHIN633,31084
+#define UNITY_TEST_ASSERT_UINT64_WITHIN(UNITY_TEST_ASSERT_UINT64_WITHIN634,31320
+#define UNITY_TEST_ASSERT_HEX64_WITHIN(UNITY_TEST_ASSERT_HEX64_WITHIN635,31557
+#define UNITY_TEST_ASSERT_EQUAL_INT64(UNITY_TEST_ASSERT_EQUAL_INT64637,31799
+#define UNITY_TEST_ASSERT_EQUAL_UINT64(UNITY_TEST_ASSERT_EQUAL_UINT64638,31950
+#define UNITY_TEST_ASSERT_EQUAL_HEX64(UNITY_TEST_ASSERT_EQUAL_HEX64639,32101
+#define UNITY_TEST_ASSERT_EQUAL_INT64_ARRAY(UNITY_TEST_ASSERT_EQUAL_INT64_ARRAY640,32252
+#define UNITY_TEST_ASSERT_EQUAL_UINT64_ARRAY(UNITY_TEST_ASSERT_EQUAL_UINT64_ARRAY641,32403
+#define UNITY_TEST_ASSERT_EQUAL_HEX64_ARRAY(UNITY_TEST_ASSERT_EQUAL_HEX64_ARRAY642,32554
+#define UNITY_TEST_ASSERT_INT64_WITHIN(UNITY_TEST_ASSERT_INT64_WITHIN643,32705
+#define UNITY_TEST_ASSERT_UINT64_WITHIN(UNITY_TEST_ASSERT_UINT64_WITHIN644,32856
+#define UNITY_TEST_ASSERT_HEX64_WITHIN(UNITY_TEST_ASSERT_HEX64_WITHIN645,33007
+#define UNITY_TEST_ASSERT_FLOAT_WITHIN(UNITY_TEST_ASSERT_FLOAT_WITHIN649,33193
+#define UNITY_TEST_ASSERT_EQUAL_FLOAT(UNITY_TEST_ASSERT_EQUAL_FLOAT650,33347
+#define UNITY_TEST_ASSERT_EQUAL_FLOAT_ARRAY(UNITY_TEST_ASSERT_EQUAL_FLOAT_ARRAY651,33501
+#define UNITY_TEST_ASSERT_FLOAT_IS_INF(UNITY_TEST_ASSERT_FLOAT_IS_INF652,33655
+#define UNITY_TEST_ASSERT_FLOAT_IS_NEG_INF(UNITY_TEST_ASSERT_FLOAT_IS_NEG_INF653,33809
+#define UNITY_TEST_ASSERT_FLOAT_IS_NAN(UNITY_TEST_ASSERT_FLOAT_IS_NAN654,33963
+#define UNITY_TEST_ASSERT_FLOAT_IS_DETERMINATE(UNITY_TEST_ASSERT_FLOAT_IS_DETERMINATE655,34117
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_INF(UNITY_TEST_ASSERT_FLOAT_IS_NOT_INF656,34271
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_NEG_INF(UNITY_TEST_ASSERT_FLOAT_IS_NOT_NEG_INF657,34425
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_NAN(UNITY_TEST_ASSERT_FLOAT_IS_NOT_NAN658,34579
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE(UNITY_TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE659,34733
+#define UNITY_TEST_ASSERT_FLOAT_WITHIN(UNITY_TEST_ASSERT_FLOAT_WITHIN661,34893
+#define UNITY_TEST_ASSERT_EQUAL_FLOAT(UNITY_TEST_ASSERT_EQUAL_FLOAT662,35094
+#define UNITY_TEST_ASSERT_EQUAL_FLOAT_ARRAY(UNITY_TEST_ASSERT_EQUAL_FLOAT_ARRAY663,35328
+#define UNITY_TEST_ASSERT_FLOAT_IS_INF(UNITY_TEST_ASSERT_FLOAT_IS_INF664,35543
+#define UNITY_TEST_ASSERT_FLOAT_IS_NEG_INF(UNITY_TEST_ASSERT_FLOAT_IS_NEG_INF665,35733
+#define UNITY_TEST_ASSERT_FLOAT_IS_NAN(UNITY_TEST_ASSERT_FLOAT_IS_NAN666,35927
+#define UNITY_TEST_ASSERT_FLOAT_IS_DETERMINATE(UNITY_TEST_ASSERT_FLOAT_IS_DETERMINATE667,36117
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_INF(UNITY_TEST_ASSERT_FLOAT_IS_NOT_INF668,36307
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_NEG_INF(UNITY_TEST_ASSERT_FLOAT_IS_NOT_NEG_INF669,36501
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_NAN(UNITY_TEST_ASSERT_FLOAT_IS_NOT_NAN670,36699
+#define UNITY_TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE(UNITY_TEST_ASSERT_FLOAT_IS_NOT_DETERMINATE671,36893
+#define UNITY_TEST_ASSERT_DOUBLE_WITHIN(UNITY_TEST_ASSERT_DOUBLE_WITHIN675,37123
+#define UNITY_TEST_ASSERT_EQUAL_DOUBLE(UNITY_TEST_ASSERT_EQUAL_DOUBLE676,37278
+#define UNITY_TEST_ASSERT_EQUAL_DOUBLE_ARRAY(UNITY_TEST_ASSERT_EQUAL_DOUBLE_ARRAY677,37433
+#define UNITY_TEST_ASSERT_DOUBLE_IS_INF(UNITY_TEST_ASSERT_DOUBLE_IS_INF678,37588
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NEG_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NEG_INF679,37743
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NAN(UNITY_TEST_ASSERT_DOUBLE_IS_NAN680,37898
+#define UNITY_TEST_ASSERT_DOUBLE_IS_DETERMINATE(UNITY_TEST_ASSERT_DOUBLE_IS_DETERMINATE681,38053
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_INF682,38208
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF683,38363
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NAN(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NAN684,38518
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE685,38673
+#define UNITY_TEST_ASSERT_DOUBLE_WITHIN(UNITY_TEST_ASSERT_DOUBLE_WITHIN687,38834
+#define UNITY_TEST_ASSERT_EQUAL_DOUBLE(UNITY_TEST_ASSERT_EQUAL_DOUBLE688,39036
+#define UNITY_TEST_ASSERT_EQUAL_DOUBLE_ARRAY(UNITY_TEST_ASSERT_EQUAL_DOUBLE_ARRAY689,39272
+#define UNITY_TEST_ASSERT_DOUBLE_IS_INF(UNITY_TEST_ASSERT_DOUBLE_IS_INF690,39488
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NEG_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NEG_INF691,39679
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NAN(UNITY_TEST_ASSERT_DOUBLE_IS_NAN692,39874
+#define UNITY_TEST_ASSERT_DOUBLE_IS_DETERMINATE(UNITY_TEST_ASSERT_DOUBLE_IS_DETERMINATE693,40065
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_INF694,40256
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NEG_INF695,40451
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NAN(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_NAN696,40650
+#define UNITY_TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE(UNITY_TEST_ASSERT_DOUBLE_IS_NOT_DETERMINATE697,40845
